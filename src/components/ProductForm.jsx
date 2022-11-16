@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 const ProductForm = () => {
   const {
     categories,
-    editId,
+    editProductId,
     editProduct,
     handleEditProduct,
     handleAddProduct,
@@ -19,28 +19,28 @@ const ProductForm = () => {
   const categoryRef = useRef();
 
   useEffect(() => {
-    if (editId) {
+    if (editProductId) {
       const { name, price, category } = editProduct;
       nameRef.current.value = name;
       priceRef.current.value = price;
       categoryRef.current.value = category;
     }
-  }, [editId]);
+  }, [editProductId]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     const tempProduct = {
-      id: editId || uuidv4(),
+      id: editProductId || uuidv4(),
       name: nameRef.current.value,
-      price: priceRef.current.value,
+      price: parseInt(priceRef.current.value),
       category:
         categoryRef.current.value === UNCATEGORIZED_PRODUCT
           ? UNCATEGORIZED_PRODUCT
-          : parseInt(categoryRef.current.value),
+          : categoryRef.current.value,
     };
 
-    if (editId) {
+    if (editProductId) {
       handleEditProduct(tempProduct);
     } else {
       handleAddProduct(tempProduct);
@@ -78,7 +78,7 @@ const ProductForm = () => {
       </Form.Group>
       <div className="d-flex justify-content-between">
         <Button variant="dark" type="submit">
-          {editId ? "Edit" : "Add"}
+          {editProductId ? "Edit" : "Add"}
         </Button>
         <Button
           variant="danger"

@@ -1,48 +1,35 @@
 {
   "sampleProducts": [
     {
-      "id": 2,
-      "name": "Updated Americano",
-      "price": "4500",
-      "category": 1
+      "id": "333a777e-75f8-4e37-a3d0-e0e9b831ac63",
+      "name": "Tea",
+      "price": 2000,
+      "category": "dddd2eba-df8f-450b-984f-8adbf72a542a"
     },
     {
-      "id": 5,
-      "name": "Updated Chocolate Cake",
-      "price": "9000",
-      "category": 2
+      "id": "8df0db6b-6c9d-4364-b226-29c285c48930",
+      "name": "Coffee",
+      "price": 2500,
+      "category": "dddd2eba-df8f-450b-984f-8adbf72a542a"
     },
     {
-      "id": 7,
-      "name": "Strawberry Cake",
-      "price": "6000",
-      "category": 2
+      "id": "101996bd-ba62-4e29-a914-a3ae3088f799",
+      "name": "Rice",
+      "price": 1000,
+      "category": "uncategorized"
     },
     {
-      "id": "4844e86f-28a7-42ed-9bba-9eb705427c36",
-      "name": "Banana Cake",
-      "price": "6000",
-      "category": 2
+      "id": "29df0997-3206-4376-aa02-f52f58b96682",
+      "name": "Coffee",
+      "price": 2000,
+      "category": "de6f6e75-0a5b-4291-98b2-1c17c4c6892a"
     },
     {
-      "id": "924bd508-8596-4a4d-b538-384d0dff705e",
-      "name": "Latte",
-      "price": "9000",
-      "category": 1
+      "id": "1480de09-337b-493d-99c0-f065a3c2c69f",
+      "name": "Tea",
+      "price": 1000,
+      "category": "de6f6e75-0a5b-4291-98b2-1c17c4c6892a"
     }
   ],
-  "categories": [
-    {
-      "id": 1,
-      "name": "Drinks 🧃"
-    },
-    {
-      "id": 2,
-      "name": "Cake 🍰"
-    },
-    {
-      "id": 3,
-      "name": "Pizza 🍕"
-    }
-  ]
+  "categories": []
 }

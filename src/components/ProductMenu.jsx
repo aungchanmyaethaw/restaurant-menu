@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { categories as dummyCategories } from "../datas";
 import CategoryRow from "./CategoryRow";
 import UnCategorizedProductRow from "./UnCategorizedProductRow";
 import { useAppContext } from "../contexts";
 const ProductMenu = () => {
-  const { setIsFormOpen, categories } = useAppContext();
+  const { setIsFormOpen, handleModalOpen, categories } = useAppContext();
 
   return (
     <section>
@@ -18,7 +16,7 @@ const ProductMenu = () => {
       </ul>
       <div className="d-flex gap-2 align-items-center">
         <Button onClick={() => setIsFormOpen(true)}>Add Product</Button>
-        <Button>Add Category</Button>
+        <Button onClick={handleModalOpen}>Add Category</Button>
       </div>
     </section>
   );

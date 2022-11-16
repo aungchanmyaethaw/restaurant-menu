@@ -4,6 +4,7 @@ import ProductMenu from "./ProductMenu";
 import ProductRow from "./ProductRow";
 import UnCategorizedProductRow from "./UnCategorizedProductRow";
 import Loader from "./Loader";
+import CategoryModal from "./CategoryModal";
 
 export {
   CategoryRow,
@@ -12,4 +13,5 @@ export {
   ProductRow,
   UnCategorizedProductRow,
   Loader,
+  CategoryModal,
 };

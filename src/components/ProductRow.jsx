@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useAppContext } from "../contexts";
+import { currencyFormatter } from "../utils";
 const ProductRow = ({ id, name, price, lastIndex, index }) => {
   const { handleDeleteProduct, handleEditProductId } = useAppContext();
   return (
@@ -11,12 +12,12 @@ const ProductRow = ({ id, name, price, lastIndex, index }) => {
     >
       <div className="d-flex justify-content-between flex-grow-1">
         <span>{name}</span>
-        <span>{price}</span>
+        <span>{currencyFormatter.format(price)}</span>
       </div>
 
       <div className="d-flex gap-2">
         <Button
-          variant="warning"
+          variant="secondary"
           size="sm"
           onClick={() => handleEditProductId(id)}
         >

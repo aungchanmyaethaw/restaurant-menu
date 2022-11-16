@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAppContext, UNCATEGORIZED_PRODUCT } from "../contexts";
 import { ProductRow } from "../components";
+import { Button } from "react-bootstrap";
 const CategoryRow = ({ id, name, uncategorized = false }) => {
-  const { products } = useAppContext();
+  const { products, handleEditCategoryId, handleDeleteCategory } =
+    useAppContext();
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
@@ -20,6 +22,7 @@ const CategoryRow = ({ id, name, uncategorized = false }) => {
   return (
     <article className="mb-5 p-2">
       <h5 className="mb-3 text-capitalize">{name}</h5>
+
       {filteredProducts.map((product, index) => (
         <ProductRow
           {...product}
@@ -28,6 +31,19 @@ const CategoryRow = ({ id, name, uncategorized = false }) => {
           index={index}
         />
       ))}
+      {!uncategorized && (
+        <div className="d-flex justify-content-end align-items-center gap-2 mt-5">
+          <Button variant="secondary" onClick={() => handleEditCategoryId(id)}>
+            Edit Category
+          </Button>
+          <Button
+            variant="outline-danger"
+            onClick={() => handleDeleteCategory(id)}
+          >
+            Delete Category
+          </Button>
+        </div>
+      )}
       <hr />
     </article>
   );
