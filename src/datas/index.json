@@ -1,0 +1,48 @@
+{
+  "sampleProducts": [
+    {
+      "id": 2,
+      "name": "Updated Americano",
+      "price": "4500",
+      "category": 1
+    },
+    {
+      "id": 5,
+      "name": "Updated Chocolate Cake",
+      "price": "9000",
+      "category": 2
+    },
+    {
+      "id": 7,
+      "name": "Strawberry Cake",
+      "price": "6000",
+      "category": 2
+    },
+    {
+      "id": "4844e86f-28a7-42ed-9bba-9eb705427c36",
+      "name": "Banana Cake",
+      "price": "6000",
+      "category": 2
+    },
+    {
+      "id": "924bd508-8596-4a4d-b538-384d0dff705e",
+      "name": "Latte",
+      "price": "9000",
+      "category": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Drinks 🧃"
+    },
+    {
+      "id": 2,
+      "name": "Cake 🍰"
+    },
+    {
+      "id": 3,
+      "name": "Pizza 🍕"
+    }
+  ]
+}
