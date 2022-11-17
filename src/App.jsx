@@ -1,5 +1,6 @@
 import { ProductForm, ProductMenu, Loader, CategoryModal } from "./components";
 import { useAppContext } from "./contexts";
+import NotificationsContainer from "./components/NotificationsContainer";
 const App = () => {
   const { isLoading } = useAppContext();
 
@@ -11,6 +12,7 @@ const App = () => {
     <>
       <CategoryModal />
       <main className="container">
+        <NotificationsContainer />
         <div className="row">
           <div
             className="col-12 col-lg-6 p-4 bg-secondary bg-opacity-25 rounded-3"

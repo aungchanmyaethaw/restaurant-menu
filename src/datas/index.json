@@ -13,12 +13,6 @@
       "category": "dddd2eba-df8f-450b-984f-8adbf72a542a"
     },
     {
-      "id": "101996bd-ba62-4e29-a914-a3ae3088f799",
-      "name": "Rice",
-      "price": 1000,
-      "category": "uncategorized"
-    },
-    {
       "id": "29df0997-3206-4376-aa02-f52f58b96682",
       "name": "Coffee",
       "price": 2000,
@@ -31,5 +25,10 @@
       "category": "de6f6e75-0a5b-4291-98b2-1c17c4c6892a"
     }
   ],
-  "categories": []
+  "categories": [
+    {
+      "id": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab",
+      "name": "Cakes"
+    }
+  ]
 }

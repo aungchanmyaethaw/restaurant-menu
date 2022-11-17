@@ -1,4 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 const AppContext = createContext();
 
 export const UNCATEGORIZED_PRODUCT = "uncategorized";
@@ -17,6 +19,7 @@ export function AppProvider({ children }) {
   const [editCategory, setEditCategory] = useState({});
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isModalShow, setIsModalShow] = useState(false);
+  const [notifications, setNotifications] = useState([]);
 
   const handleModalClose = () => {
     setIsModalShow(false);
@@ -38,6 +41,18 @@ export function AppProvider({ children }) {
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(
+      () =>
+        setNotifications((prev) => {
+          return prev.slice(1);
+        }),
+      3000
+    );
+
+    return () => clearTimeout(timer);
+  }, [notifications]);
+
   //////Products
 
   // Delete Products
@@ -46,7 +61,17 @@ export function AppProvider({ children }) {
     const filteredProducts = products.filter(({ id }) => id !== productId);
     fetch("http://localhost:8000/sampleProducts/" + productId, {
       method: "DELETE",
-    }).then(() => setProducts(filteredProducts));
+    }).then(() => {
+      setProducts(filteredProducts);
+      setNotifications((prev) => [
+        ...prev,
+        {
+          id: uuidv4(),
+          clsName: "warning",
+          text: "Product successfully deleted.",
+        },
+      ]);
+    });
   }
 
   // Edit Products
@@ -76,6 +101,14 @@ export function AppProvider({ children }) {
     setProducts(newProducts);
     setEditProductId(null);
     setEditProduct({});
+    setNotifications((prev) => [
+      ...prev,
+      {
+        id: uuidv4(),
+        clsName: "info",
+        text: "Product successfully edited.",
+      },
+    ]);
   }
 
   // Add Products
@@ -85,7 +118,17 @@ export function AppProvider({ children }) {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(addedProduct),
-    }).then(() => setProducts((prev) => [...prev, addedProduct]));
+    }).then(() => {
+      setProducts((prev) => [...prev, addedProduct]);
+      setNotifications((prev) => [
+        ...prev,
+        {
+          id: uuidv4(),
+          clsName: "success",
+          text: "Product successfully added.",
+        },
+      ]);
+    });
   }
 
   ////// Category
@@ -97,7 +140,17 @@ export function AppProvider({ children }) {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newCategory),
-    }).then(() => setCategories((prev) => [...prev, newCategory]));
+    }).then(() => {
+      setCategories((prev) => [...prev, newCategory]);
+      setNotifications((prev) => [
+        ...prev,
+        {
+          id: uuidv4(),
+          clsName: "success",
+          text: "Product successfully added.",
+        },
+      ]);
+    });
   }
 
   // Edit Category
@@ -131,6 +184,14 @@ export function AppProvider({ children }) {
     setCategories(newCategories);
     setEditCategoryId(null);
     setEditCategory({});
+    setNotifications((prev) => [
+      ...prev,
+      {
+        id: uuidv4(),
+        clsName: "info",
+        text: "Category successfully edited.",
+      },
+    ]);
   }
 
   //Delete Category
@@ -142,6 +203,14 @@ export function AppProvider({ children }) {
     }).then(() => {
       moveDeletedCategoryProducts(cateogryId);
       setCategories(filteredCategories);
+      setNotifications((prev) => [
+        ...prev,
+        {
+          id: uuidv4(),
+          clsName: "warning",
+          text: "Category successfully deleted and all products are moved to uncategorized.",
+        },
+      ]);
     });
   }
 
@@ -178,6 +247,7 @@ export function AppProvider({ children }) {
         editCategory,
         editCategoryId,
         handleDeleteCategory,
+        notifications,
       }}
     >
       {children}
