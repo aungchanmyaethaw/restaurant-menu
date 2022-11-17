@@ -23,12 +23,168 @@
       "name": "Tea",
       "price": 1000,
       "category": "de6f6e75-0a5b-4291-98b2-1c17c4c6892a"
+    },
+    {
+      "id": "452a8cf1-412e-4807-ab75-9a381f3ab1b4",
+      "name": "Chocolate Cake",
+      "price": 2000,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "ac18e5ff-f4a4-4a2a-8e3a-be13f789f0d0",
+      "name": "Coca Cola",
+      "price": 1000,
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+    },
+    {
+      "id": "61d9b5f6-60d8-4a2f-ba03-418d1337079c",
+      "name": "Strawberry Cake",
+      "price": 2500,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "4710de4b-b8b5-4f0c-bcee-0e2f42512b8d",
+      "name": "Pineapple Cake",
+      "price": 1500,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "8bc0259b-2a23-4d87-baab-99785ee45127",
+      "name": "Water",
+      "price": 500,
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+    },
+    {
+      "id": "fddedbc2-e8ec-49f1-81e9-5adab5eacc07",
+      "name": "Carrot Cake",
+      "price": 2000,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "ecce53fa-27a9-4ff4-b386-9b91146280fe",
+      "name": "Cheese Cake",
+      "price": 2000,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "d8f89d95-749e-4188-bc97-ddeb7115d545",
+      "name": "Coffee Cake",
+      "price": 3000,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "754b8136-d6f3-4b0e-9042-4f4855d95172",
+      "name": "Red Bull",
+      "price": 1200,
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+    },
+    {
+      "id": "2f9d0e4a-6700-4fa2-aea0-7f3e4194af23",
+      "name": "Shark",
+      "price": 1300,
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+    },
+    {
+      "id": "cb52de14-bb01-4a63-b1ac-4a74c8c69a87",
+      "name": "Sprite",
+      "price": 1000,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "8f791b9a-9ddd-4429-91b4-1488c4d631c5",
+      "name": "Sting(Red)",
+      "price": 800,
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+    },
+    {
+      "id": "713b3d3f-6626-4776-8ca3-b2a4e5607784",
+      "name": "Sting(Yellow)",
+      "price": 800,
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+    },
+    {
+      "id": "c70b7eca-3da4-48eb-a4bf-e241b1673ca2",
+      "name": "Speed",
+      "price": 1000,
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+    },
+    {
+      "id": "5ce51d9a-9fa2-42bb-8aa8-9808af382e2a",
+      "name": "Grand Royal Blue",
+      "price": 4500,
+      "category": "6c9d3b51-657f-42b0-88a5-72150486f51d"
+    },
+    {
+      "id": "ce907fe2-b69e-48c3-a7fa-22f1493b6581",
+      "name": "Grand Royal Smooth",
+      "price": 3800,
+      "category": "6c9d3b51-657f-42b0-88a5-72150486f51d"
+    },
+    {
+      "id": "d292cd76-2b77-4ac3-92fb-f1f139679fe8",
+      "name": "Chang",
+      "price": 2300,
+      "category": "6c9d3b51-657f-42b0-88a5-72150486f51d"
+    },
+    {
+      "id": "39d6883c-8c86-4cf4-b768-194b67a84498",
+      "name": "product 1",
+      "price": 1000,
+      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
+    },
+    {
+      "id": "02ed2808-2a93-4782-9d65-34e88fb73361",
+      "name": "product 2",
+      "price": 2000,
+      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
+    },
+    {
+      "id": "174b2c82-fb37-4ac2-86a6-b30c04a5f076",
+      "name": "product 3",
+      "price": 3000,
+      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
+    },
+    {
+      "id": "66f5792a-1bdf-46d4-b0e9-869934b54ce5",
+      "name": "product 1",
+      "price": 1000,
+      "category": "015b2387-05ac-47e9-a066-f61959180c07"
+    },
+    {
+      "id": "effed188-9584-4bdb-82fb-e62e5a3c422a",
+      "name": "product 2",
+      "price": 1000,
+      "category": "015b2387-05ac-47e9-a066-f61959180c07"
+    },
+    {
+      "id": "44473039-fb1a-4346-986b-4af8ec3030ff",
+      "name": "Fried Rice",
+      "price": 2000,
+      "category": "uncategorized"
+    },
+    {
+      "id": "63391877-be18-4896-b457-474921f71a6c",
+      "name": "updatd Testing 1",
+      "price": 1000,
+      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
     }
   ],
   "categories": [
     {
       "id": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab",
       "name": "Cakes"
+    },
+    {
+      "id": "21528ba0-247a-4cca-b0d4-0b48d701e01d",
+      "name": "Drinks"
+    },
+    {
+      "id": "6c9d3b51-657f-42b0-88a5-72150486f51d",
+      "name": "Alcohol"
+    },
+    {
+      "id": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8",
+      "name": "Updated Testing Category 1"
     }
   ]
 }

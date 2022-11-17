@@ -20,7 +20,7 @@ const CategoryRow = ({ id, name, uncategorized = false }) => {
   }, [products]);
 
   return (
-    <article className="mb-5 p-2">
+    <article className=" p-4 bg-info bg-opacity-50 rounded">
       <h5 className="mb-3 text-capitalize">{name}</h5>
 
       {filteredProducts.map((product, index) => (
@@ -31,6 +31,7 @@ const CategoryRow = ({ id, name, uncategorized = false }) => {
           index={index}
         />
       ))}
+      <hr />
       {!uncategorized && (
         <div className="d-flex justify-content-end align-items-center gap-2 mt-5">
           <Button variant="secondary" onClick={() => handleEditCategoryId(id)}>
@@ -44,7 +45,6 @@ const CategoryRow = ({ id, name, uncategorized = false }) => {
           </Button>
         </div>
       )}
-      <hr />
     </article>
   );
 };

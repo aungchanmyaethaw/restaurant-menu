@@ -3,21 +3,30 @@ import CategoryRow from "./CategoryRow";
 import UnCategorizedProductRow from "./UnCategorizedProductRow";
 import { useAppContext } from "../contexts";
 const ProductMenu = () => {
-  const { setIsFormOpen, handleModalOpen, categories } = useAppContext();
+  const { handleProductModalOpen, handleCategoryModalOpen, categories } =
+    useAppContext();
 
   return (
-    <section>
-      <h4 className="mb-4">Menu</h4>
-      <ul className="p-0">
+    <section className="py-5">
+      <h1 className="mb-4">Menu</h1>
+      <div className="d-flex gap-2 align-items-center mb-4">
+        <Button onClick={handleProductModalOpen}>Add Product</Button>
+        <Button onClick={handleCategoryModalOpen}>Add Category</Button>
+      </div>
+      <hr />
+      <ul
+        className="p-0 mt-5"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+          gap: "1.25rem",
+        }}
+      >
         {categories.map((category) => (
           <CategoryRow {...category} key={category.id} />
         ))}
         <UnCategorizedProductRow />
       </ul>
-      <div className="d-flex gap-2 align-items-center">
-        <Button onClick={() => setIsFormOpen(true)}>Add Product</Button>
-        <Button onClick={handleModalOpen}>Add Category</Button>
-      </div>
     </section>
   );
 };

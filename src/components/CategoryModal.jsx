@@ -5,9 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 const CategoryModal = () => {
   const {
     categories,
-    handleModalOpen,
-    handleModalClose,
-    isModalShow,
+    handleCategoryModalClose,
+    isCategoryModalShow,
     handleAddCategory,
     editCategory,
     editCategoryId,
@@ -18,7 +17,6 @@ const CategoryModal = () => {
 
   useEffect(() => {
     if (editCategoryId) {
-      handleModalOpen();
       const { name } = editCategory;
       categoryRef.current.value = name;
     }
@@ -42,16 +40,15 @@ const CategoryModal = () => {
         handleAddCategory(tempCategory);
       }
     }
-    handleModalClose();
+    handleCategoryModalClose();
   }
 
   return (
     <Modal
-      show={isModalShow}
-      onHide={handleModalClose}
+      show={isCategoryModalShow}
+      onHide={handleCategoryModalClose}
       backdrop="static"
       keyboard={false}
-      centered
     >
       <Modal.Header closeButton>
         <Modal.Title>{editCategoryId ? "Edit" : "Add"} Category</Modal.Title>
@@ -66,7 +63,7 @@ const CategoryModal = () => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleModalClose}>
+          <Button variant="danger" onClick={handleCategoryModalClose}>
             Cancel
           </Button>
           <Button variant="dark" type="submit">

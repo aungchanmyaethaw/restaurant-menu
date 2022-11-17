@@ -17,28 +17,38 @@ export function AppProvider({ children }) {
   const [editProduct, setEditProduct] = useState({});
   const [editCategoryId, setEditCategoryId] = useState(null);
   const [editCategory, setEditCategory] = useState({});
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isModalShow, setIsModalShow] = useState(false);
+  const [isProductModalShow, setIsProductModalShow] = useState(false);
+  const [isCategoryModalShow, setIsCategoryModalShow] = useState(false);
   const [notifications, setNotifications] = useState([]);
 
-  const handleModalClose = () => {
-    setIsModalShow(false);
+  const handleCategoryModalClose = () => {
+    setIsCategoryModalShow(false);
     setEditProduct({});
     setEditCategoryId(null);
   };
-  const handleModalOpen = () => setIsModalShow(true);
+  const handleCategoryModalOpen = () => setIsCategoryModalShow(true);
+
+  const handleProductModalClose = () => {
+    setIsProductModalShow(false);
+    setEditProduct({});
+    setEditProductId(null);
+  };
+
+  const handleProductModalOpen = () => setIsProductModalShow(true);
+
+  // Fetching Data
 
   const getData = async (url, setState) => {
+    setIsLoading(true);
     const res = await fetch(url);
     const data = await res.json();
     setState(data);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    setIsLoading(true);
     getData("http://localhost:8000/sampleProducts", setProducts);
     getData("http://localhost:8000/categories", setCategories);
-    setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -77,7 +87,7 @@ export function AppProvider({ children }) {
   // Edit Products
 
   function handleEditProductId(productId) {
-    setIsFormOpen(true);
+    setIsProductModalShow(true);
     setEditProductId(productId);
     const tempProduct = products.find((product) => product.id === productId);
     setEditProduct(tempProduct);
@@ -147,7 +157,7 @@ export function AppProvider({ children }) {
         {
           id: uuidv4(),
           clsName: "success",
-          text: "Product successfully added.",
+          text: "Category successfully added.",
         },
       ]);
     });
@@ -156,7 +166,7 @@ export function AppProvider({ children }) {
   // Edit Category
 
   function handleEditCategoryId(categoryId) {
-    handleModalOpen();
+    handleCategoryModalOpen();
     setEditCategoryId(categoryId);
     const tempCategory = categories.find(
       (category) => category.id === categoryId
@@ -235,12 +245,13 @@ export function AppProvider({ children }) {
         handleEditProduct,
         handleAddProduct,
         editProduct,
-        isFormOpen,
-        setIsFormOpen,
+        isProductModalShow,
+        handleProductModalOpen,
+        handleProductModalClose,
         isLoading,
-        isModalShow,
-        handleModalClose,
-        handleModalOpen,
+        isCategoryModalShow,
+        handleCategoryModalClose,
+        handleCategoryModalOpen,
         handleAddCategory,
         handleEditCategoryId,
         handleEditCategory,

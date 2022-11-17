@@ -1,5 +1,5 @@
 import CategoryRow from "./CategoryRow";
-import ProductForm from "./ProductForm";
+import ProductModal from "./ProductModal";
 import ProductMenu from "./ProductMenu";
 import ProductRow from "./ProductRow";
 import UnCategorizedProductRow from "./UnCategorizedProductRow";
@@ -8,7 +8,7 @@ import CategoryModal from "./CategoryModal";
 
 export {
   CategoryRow,
-  ProductForm,
+  ProductModal,
   ProductMenu,
   ProductRow,
   UnCategorizedProductRow,
