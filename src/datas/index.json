@@ -109,24 +109,6 @@
       "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
     },
     {
-      "id": "5ce51d9a-9fa2-42bb-8aa8-9808af382e2a",
-      "name": "Grand Royal Blue",
-      "price": 4500,
-      "category": "6c9d3b51-657f-42b0-88a5-72150486f51d"
-    },
-    {
-      "id": "ce907fe2-b69e-48c3-a7fa-22f1493b6581",
-      "name": "Grand Royal Smooth",
-      "price": 3800,
-      "category": "6c9d3b51-657f-42b0-88a5-72150486f51d"
-    },
-    {
-      "id": "d292cd76-2b77-4ac3-92fb-f1f139679fe8",
-      "name": "Chang",
-      "price": 2300,
-      "category": "6c9d3b51-657f-42b0-88a5-72150486f51d"
-    },
-    {
       "id": "39d6883c-8c86-4cf4-b768-194b67a84498",
       "name": "product 1",
       "price": 1000,
@@ -161,12 +143,6 @@
       "name": "Fried Rice",
       "price": 2000,
       "category": "uncategorized"
-    },
-    {
-      "id": "63391877-be18-4896-b457-474921f71a6c",
-      "name": "updatd Testing 1",
-      "price": 1000,
-      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
     }
   ],
   "categories": [
@@ -179,12 +155,8 @@
       "name": "Drinks"
     },
     {
-      "id": "6c9d3b51-657f-42b0-88a5-72150486f51d",
-      "name": "Alcohol"
-    },
-    {
       "id": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8",
-      "name": "Updated Testing Category 1"
+      "name": "updated Category"
     }
   ]
 }

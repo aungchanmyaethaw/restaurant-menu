@@ -20,6 +20,7 @@ export function AppProvider({ children }) {
   const [isProductModalShow, setIsProductModalShow] = useState(false);
   const [isCategoryModalShow, setIsCategoryModalShow] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [isError, setIsError] = useState(false);
 
   const handleCategoryModalClose = () => {
     setIsCategoryModalShow(false);
@@ -36,14 +37,31 @@ export function AppProvider({ children }) {
 
   const handleProductModalOpen = () => setIsProductModalShow(true);
 
+  const handleAddingNotification = (clsName, text) => {
+    setNotifications((prev) => [
+      ...prev,
+      {
+        id: uuidv4(),
+        clsName,
+        text,
+      },
+    ]);
+  };
+
   // Fetching Data
 
   const getData = async (url, setState) => {
     setIsLoading(true);
-    const res = await fetch(url);
-    const data = await res.json();
-    setState(data);
-    setIsLoading(false);
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      setState(data);
+      setIsError(false);
+      setIsLoading(false);
+    } catch {
+      setIsError(true);
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -57,7 +75,7 @@ export function AppProvider({ children }) {
         setNotifications((prev) => {
           return prev.slice(1);
         }),
-      3000
+      2000
     );
 
     return () => clearTimeout(timer);
@@ -111,14 +129,7 @@ export function AppProvider({ children }) {
     setProducts(newProducts);
     setEditProductId(null);
     setEditProduct({});
-    setNotifications((prev) => [
-      ...prev,
-      {
-        id: uuidv4(),
-        clsName: "info",
-        text: "Product successfully edited.",
-      },
-    ]);
+    handleAddingNotification("info", "Product successfully edited.");
   }
 
   // Add Products
@@ -130,14 +141,7 @@ export function AppProvider({ children }) {
       body: JSON.stringify(addedProduct),
     }).then(() => {
       setProducts((prev) => [...prev, addedProduct]);
-      setNotifications((prev) => [
-        ...prev,
-        {
-          id: uuidv4(),
-          clsName: "success",
-          text: "Product successfully added.",
-        },
-      ]);
+      handleAddingNotification("success", "Product successfully added.");
     });
   }
 
@@ -194,14 +198,7 @@ export function AppProvider({ children }) {
     setCategories(newCategories);
     setEditCategoryId(null);
     setEditCategory({});
-    setNotifications((prev) => [
-      ...prev,
-      {
-        id: uuidv4(),
-        clsName: "info",
-        text: "Category successfully edited.",
-      },
-    ]);
+    handleAddingNotification("info", "Category successfully edited.");
   }
 
   //Delete Category
@@ -213,14 +210,10 @@ export function AppProvider({ children }) {
     }).then(() => {
       moveDeletedCategoryProducts(cateogryId);
       setCategories(filteredCategories);
-      setNotifications((prev) => [
-        ...prev,
-        {
-          id: uuidv4(),
-          clsName: "warning",
-          text: "Category successfully deleted and all products are moved to uncategorized.",
-        },
-      ]);
+      handleAddingNotification(
+        "warning",
+        "Category successfully deleted and all products are move to uncategorized."
+      );
     });
   }
 
@@ -259,6 +252,8 @@ export function AppProvider({ children }) {
         editCategoryId,
         handleDeleteCategory,
         notifications,
+        handleAddingNotification,
+        isError,
       }}
     >
       {children}

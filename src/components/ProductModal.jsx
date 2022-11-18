@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { useAppContext, UNCATEGORIZED_PRODUCT } from "../contexts";
 import { v4 as uuidv4 } from "uuid";
@@ -6,17 +6,52 @@ import { v4 as uuidv4 } from "uuid";
 const ProductCategory = () => {
   const {
     categories,
+    products,
     editProductId,
     editProduct,
     handleEditProduct,
     handleAddProduct,
     isProductModalShow,
     handleProductModalClose,
+    handleAddingNotification,
   } = useAppContext();
+
+  const [numberError, setNumberError] = useState(false);
+  const [nameError, setNameError] = useState(false);
 
   const nameRef = useRef();
   const priceRef = useRef();
   const categoryRef = useRef();
+
+  const priceCheck = (price) => {
+    if (price < 0) {
+      setNumberError(true);
+    } else {
+      setNumberError(false);
+    }
+  };
+
+  const nameCheck = (name) => {
+    let result = [];
+
+    if (editProductId) {
+      result = products
+        .filter((product) => product.id !== editProductId)
+        .every((product) => product.name.toLowerCase() !== name?.toLowerCase());
+    } else {
+      result = products.every(
+        (product) => product.name.toLowerCase() !== name?.toLowerCase()
+      );
+    }
+    if (!result) {
+      setNameError(true);
+    } else {
+      setNameError(false);
+    }
+  };
+
+  useMemo(() => priceCheck(priceRef.current?.value), [priceRef.current?.value]);
+  useMemo(() => nameCheck(nameRef.current?.value), [nameRef.current?.value]);
 
   useEffect(() => {
     if (editProductId) {
@@ -41,14 +76,20 @@ const ProductCategory = () => {
     };
 
     if (editProductId) {
+      if (numberError || nameError) {
+        handleAddingNotification("danger", "Product editing failed.");
+        return;
+      }
       handleEditProduct(tempProduct);
     } else {
+      if (numberError || nameError) {
+        handleAddingNotification("danger", "Product adding failed.");
+
+        return;
+      }
       handleAddProduct(tempProduct);
     }
 
-    nameRef.current.value = "";
-    priceRef.current.value = "";
-    categoryRef.current.value = UNCATEGORIZED_PRODUCT;
     handleProductModalClose();
   }
 
@@ -66,15 +107,30 @@ const ProductCategory = () => {
         <Modal.Body>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Product Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Name" ref={nameRef} />
+            <Form.Control
+              type="text"
+              placeholder="Enter Name"
+              ref={nameRef}
+              autoFocus
+              className={`${nameError && "error"} mb-1`}
+            />
+            {nameError && <span className="text-danger">Already exist.</span>}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Product Price</Form.Label>
+
             <Form.Control
               type="number"
               placeholder="Enter Price"
+              min="0"
               ref={priceRef}
+              className={`${numberError && "error"} mb-1`}
             />
+            {numberError && (
+              <span className="text-danger">
+                Negative numbers are not accepted.
+              </span>
+            )}
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Categories</Form.Label>

@@ -1,0 +1,4 @@
+.form-control.error:focus {
+  border-color: #ff0000 !important;
+  box-shadow: 0 0 0 0.25rem rgba(227, 93, 106, 0.5);
+}

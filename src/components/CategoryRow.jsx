@@ -20,7 +20,11 @@ const CategoryRow = ({ id, name, uncategorized = false }) => {
   }, [products]);
 
   return (
-    <article className=" p-4 bg-info bg-opacity-50 rounded">
+    <article
+      className={`p-4  rounded ${
+        uncategorized ? "bg-secondary bg-opacity-25" : "bg-info bg-opacity-50"
+      }`}
+    >
       <h5 className="mb-3 text-capitalize">{name}</h5>
 
       {filteredProducts.map((product, index) => (

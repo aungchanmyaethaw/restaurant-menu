@@ -1,8 +1,14 @@
-import { ProductModal, ProductMenu, Loader, CategoryModal } from "./components";
+import {
+  ProductModal,
+  ProductMenu,
+  Loader,
+  CategoryModal,
+  Error,
+} from "./components";
 import { useAppContext } from "./contexts";
 import NotificationsContainer from "./components/NotificationsContainer";
 const App = () => {
-  const { isLoading } = useAppContext();
+  const { isLoading, isError } = useAppContext();
 
   if (isLoading) {
     return <Loader />;
@@ -13,9 +19,13 @@ const App = () => {
       <CategoryModal />
       <ProductModal />
       <NotificationsContainer />
-      <main className="container">
-        <ProductMenu />
-      </main>
+      {isError ? (
+        <Error />
+      ) : (
+        <main className="container">
+          <ProductMenu />
+        </main>
+      )}
     </>
   );
 };
