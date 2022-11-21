@@ -21,10 +21,15 @@ export function AppProvider({ children }) {
   const [isCategoryModalShow, setIsCategoryModalShow] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [isError, setIsError] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(null);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+  const [orders, setOrders] = useState([]);
+  const handleChangeAdmin = () => setIsAdmin(true);
+  const handleChangeUsers = () => setIsAdmin(false);
 
   const handleCategoryModalClose = () => {
     setIsCategoryModalShow(false);
-    setEditProduct({});
+    setEditCategory({});
     setEditCategoryId(null);
   };
   const handleCategoryModalOpen = () => setIsCategoryModalShow(true);
@@ -37,6 +42,10 @@ export function AppProvider({ children }) {
 
   const handleProductModalOpen = () => setIsProductModalShow(true);
 
+  const handleCheckOutModalOpen = () => setIsCheckoutModalOpen(true);
+
+  const handleCheckOutModalClose = () => setIsCheckoutModalOpen(false);
+
   const handleAddingNotification = (clsName, text) => {
     setNotifications((prev) => [
       ...prev,
@@ -46,6 +55,44 @@ export function AppProvider({ children }) {
         text,
       },
     ]);
+  };
+
+  const handleAddSingleProductOrderDetails = (productDetails) => {
+    const isAlready = orders.find(
+      (order) => order.productId === productDetails.productId
+    );
+
+    if (isAlready) {
+      const { qty: prevQty, total: prevTotal } = isAlready;
+      const { qty: newQty, total: newTotal } = productDetails;
+      const tempQty = prevQty + newQty;
+      const tempTotal = prevTotal + newTotal;
+      fetch(`http://localhost:8000/orders/${isAlready.id}`, {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          qty: tempQty,
+          total: tempTotal,
+        }),
+      }).then(() => {
+        const tempOrders = orders.map((order) => {
+          if (order.productId === productDetails.productId) {
+            return { ...order, qty: tempQty, total: tempTotal };
+          }
+          return order;
+        });
+
+        setOrders(tempOrders);
+      });
+    } else {
+      fetch("http://localhost:8000/orders/", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(productDetails),
+      }).then(() => {
+        setOrders((prev) => [...prev, productDetails]);
+      });
+    }
   };
 
   // Fetching Data
@@ -67,18 +114,20 @@ export function AppProvider({ children }) {
   useEffect(() => {
     getData("http://localhost:8000/sampleProducts", setProducts);
     getData("http://localhost:8000/categories", setCategories);
+    getData("http://localhost:8000/orders", setOrders);
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(
-      () =>
-        setNotifications((prev) => {
-          return prev.slice(1);
-        }),
-      2000
-    );
-
-    return () => clearTimeout(timer);
+    if (notifications.length > 0) {
+      const timer = setTimeout(
+        () =>
+          setNotifications((prev) => {
+            return prev.slice(1);
+          }),
+        2000
+      );
+      return () => clearTimeout(timer);
+    }
   }, [notifications]);
 
   //////Products
@@ -254,6 +303,14 @@ export function AppProvider({ children }) {
         notifications,
         handleAddingNotification,
         isError,
+        isAdmin,
+        handleChangeAdmin,
+        handleChangeUsers,
+        isCheckoutModalOpen,
+        orders,
+        handleCheckOutModalOpen,
+        handleCheckOutModalClose,
+        handleAddSingleProductOrderDetails,
       }}
     >
       {children}

@@ -1,31 +1,18 @@
-import {
-  ProductModal,
-  ProductMenu,
-  Loader,
-  CategoryModal,
-  Error,
-} from "./components";
-import { useAppContext } from "./contexts";
-import NotificationsContainer from "./components/NotificationsContainer";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Admin from "./pages/Admin";
+import Users from "./pages/Users";
+import { PageNavbar } from "./components";
 const App = () => {
-  const { isLoading, isError } = useAppContext();
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <>
-      <CategoryModal />
-      <ProductModal />
-      <NotificationsContainer />
-      {isError ? (
-        <Error />
-      ) : (
-        <main className="container">
-          <ProductMenu />
-        </main>
-      )}
+      <Router>
+        <PageNavbar />
+        <Routes>
+          <Route path="/" element={<Admin />} />
+          <Route path="/users" element={<Users />} />
+          <Route />
+        </Routes>
+      </Router>
     </>
   );
 };

@@ -1,24 +1,23 @@
-import { Button } from "react-bootstrap";
-import CategoryRow from "./CategoryRow";
-import UnCategorizedProductRow from "./UnCategorizedProductRow";
+import {
+  CategoryRow,
+  UnCategorizedProductRow,
+  AdminMenuBtnsGroup,
+  UsersCheckoutBtn,
+} from "./index";
 import { useAppContext } from "../contexts";
 const ProductMenu = () => {
-  const { handleProductModalOpen, handleCategoryModalOpen, categories } =
-    useAppContext();
+  const { categories, isAdmin } = useAppContext();
 
   return (
     <section className="py-5">
       <h1 className="mb-4">Menu</h1>
-      <div className="d-flex gap-2 align-items-center mb-4">
-        <Button onClick={handleProductModalOpen}>Add Product</Button>
-        <Button onClick={handleCategoryModalOpen}>Add Category</Button>
-      </div>
+      {isAdmin ? <AdminMenuBtnsGroup /> : <UsersCheckoutBtn />}
       <hr />
       <ul
         className="p-0 mt-5"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+          gridTemplateColumns: "repeat(auto-fit,minmax(320px,auto))",
           gap: "1.25rem",
         }}
       >

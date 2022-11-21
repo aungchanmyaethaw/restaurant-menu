@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useMemo } from "react";
-import { useAppContext } from "../contexts";
+import { useAppContext, UNCATEGORIZED_PRODUCT } from "../contexts";
 import { Modal, Button, Form } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 const CategoryModal = () => {
@@ -13,9 +13,8 @@ const CategoryModal = () => {
     handleEditCategory,
     handleAddingNotification,
   } = useAppContext();
-
-  const [nameError, setNameError] = useState();
-  const categoryRef = useRef();
+  const [category, setCategory] = useState("");
+  const [nameError, setNameError] = useState(false);
 
   const categoryCheck = (name) => {
     let result = [];
@@ -24,11 +23,15 @@ const CategoryModal = () => {
       result = categories
         .filter((category) => category.id !== editCategoryId)
         .every(
-          (category) => category.name.toLowerCase() !== name?.toLowerCase()
+          (category) =>
+            category.name.toLowerCase() !== name?.toLowerCase() &&
+            UNCATEGORIZED_PRODUCT !== name?.toLowerCase()
         );
     } else {
       result = categories.every(
-        (category) => category.name.toLowerCase() !== name?.toLowerCase()
+        (category) =>
+          category.name.toLowerCase() !== name?.toLowerCase() &&
+          UNCATEGORIZED_PRODUCT !== name?.toLowerCase()
       );
     }
     if (!result) {
@@ -41,16 +44,20 @@ const CategoryModal = () => {
   useEffect(() => {
     if (editCategoryId) {
       const { name } = editCategory;
-      categoryRef.current.value = name;
+      setCategory(name);
     }
   }, [editCategoryId]);
+
+  useEffect(() => {
+    categoryCheck(category);
+  }, [category]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     const tempCategory = {
       id: editCategoryId || uuidv4(),
-      name: categoryRef.current.value,
+      name: category,
     };
     if (editCategoryId) {
       if (nameError) {
@@ -68,11 +75,6 @@ const CategoryModal = () => {
     }
     handleCategoryModalClose();
   }
-
-  useMemo(
-    () => categoryCheck(categoryRef.current?.value),
-    [categoryRef.current?.value]
-  );
 
   return (
     <Modal
@@ -92,7 +94,8 @@ const CategoryModal = () => {
             </Form.Label>
             <Form.Control
               type="text"
-              ref={categoryRef}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               autoFocus
               className={`${nameError && "error"} mb-1`}
             />

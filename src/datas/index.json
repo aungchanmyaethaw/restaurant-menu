@@ -25,12 +25,6 @@
       "category": "de6f6e75-0a5b-4291-98b2-1c17c4c6892a"
     },
     {
-      "id": "452a8cf1-412e-4807-ab75-9a381f3ab1b4",
-      "name": "Chocolate Cake",
-      "price": 2000,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
-    },
-    {
       "id": "ac18e5ff-f4a4-4a2a-8e3a-be13f789f0d0",
       "name": "Coca Cola",
       "price": 1000,
@@ -38,9 +32,9 @@
     },
     {
       "id": "61d9b5f6-60d8-4a2f-ba03-418d1337079c",
-      "name": "Strawberry Cake",
+      "name": "Updated Strawberry Cake",
       "price": 2500,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
     },
     {
       "id": "4710de4b-b8b5-4f0c-bcee-0e2f42512b8d",
@@ -109,39 +103,15 @@
       "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
     },
     {
-      "id": "39d6883c-8c86-4cf4-b768-194b67a84498",
-      "name": "product 1",
+      "id": "ca1dd11d-60b7-4a7c-b8c3-51ed2e24d165",
+      "name": "Blah Blah Cake",
+      "price": 12000,
+      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+    },
+    {
+      "id": "e23490f7-edce-4a84-b362-572918b911cf",
+      "name": "testing 2",
       "price": 1000,
-      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
-    },
-    {
-      "id": "02ed2808-2a93-4782-9d65-34e88fb73361",
-      "name": "product 2",
-      "price": 2000,
-      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
-    },
-    {
-      "id": "174b2c82-fb37-4ac2-86a6-b30c04a5f076",
-      "name": "product 3",
-      "price": 3000,
-      "category": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8"
-    },
-    {
-      "id": "66f5792a-1bdf-46d4-b0e9-869934b54ce5",
-      "name": "product 1",
-      "price": 1000,
-      "category": "015b2387-05ac-47e9-a066-f61959180c07"
-    },
-    {
-      "id": "effed188-9584-4bdb-82fb-e62e5a3c422a",
-      "name": "product 2",
-      "price": 1000,
-      "category": "015b2387-05ac-47e9-a066-f61959180c07"
-    },
-    {
-      "id": "44473039-fb1a-4346-986b-4af8ec3030ff",
-      "name": "Fried Rice",
-      "price": 2000,
       "category": "uncategorized"
     }
   ],
@@ -155,8 +125,38 @@
       "name": "Drinks"
     },
     {
-      "id": "f36b963e-a1ed-42b1-9454-d9795e5ee1f8",
-      "name": "updated Category"
+      "id": "a87b5abd-df72-4e09-8780-cc9a89f4d10a",
+      "name": "Testing Category 1"
+    }
+  ],
+  "orders": [
+    {
+      "id": "edf2e6f7-5228-4128-8497-640bddb6893e",
+      "productId": "4710de4b-b8b5-4f0c-bcee-0e2f42512b8d",
+      "name": "Pineapple Cake",
+      "total": 93000,
+      "qty": 62
+    },
+    {
+      "id": "47ab00bb-0e21-4419-887c-326577327723",
+      "productId": "fddedbc2-e8ec-49f1-81e9-5adab5eacc07",
+      "name": "Carrot Cake",
+      "total": 8000,
+      "qty": 4
+    },
+    {
+      "id": "cb5c1149-1f82-47e8-8244-3dd95923a067",
+      "productId": "e23490f7-edce-4a84-b362-572918b911cf",
+      "name": "testing 2",
+      "total": 2000,
+      "qty": 2
+    },
+    {
+      "id": "e88db58e-3792-4341-b287-4cb767a71c74",
+      "productId": "ca1dd11d-60b7-4a7c-b8c3-51ed2e24d165",
+      "name": "Blah Blah Cake",
+      "total": 24000,
+      "qty": 2
     }
   ]
 }

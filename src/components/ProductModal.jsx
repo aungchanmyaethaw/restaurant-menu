@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { useAppContext, UNCATEGORIZED_PRODUCT } from "../contexts";
 import { v4 as uuidv4 } from "uuid";
@@ -16,12 +16,11 @@ const ProductCategory = () => {
     handleAddingNotification,
   } = useAppContext();
 
-  const [numberError, setNumberError] = useState(false);
+  const [productName, setProductName] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productCategory, setProductCategory] = useState(UNCATEGORIZED_PRODUCT);
   const [nameError, setNameError] = useState(false);
-
-  const nameRef = useRef();
-  const priceRef = useRef();
-  const categoryRef = useRef();
+  const [numberError, setNumberError] = useState(false);
 
   const priceCheck = (price) => {
     if (price < 0) {
@@ -32,7 +31,7 @@ const ProductCategory = () => {
   };
 
   const nameCheck = (name) => {
-    let result = [];
+    let result;
 
     if (editProductId) {
       result = products
@@ -43,60 +42,78 @@ const ProductCategory = () => {
         (product) => product.name.toLowerCase() !== name?.toLowerCase()
       );
     }
+    console.log();
     if (!result) {
       setNameError(true);
     } else {
       setNameError(false);
     }
+    console.log(nameError);
   };
 
-  useMemo(() => priceCheck(priceRef.current?.value), [priceRef.current?.value]);
-  useMemo(() => nameCheck(nameRef.current?.value), [nameRef.current?.value]);
+  const inputReset = () => {
+    setProductName("");
+    setProductPrice("");
+    setProductCategory(UNCATEGORIZED_PRODUCT);
+  };
 
   useEffect(() => {
     if (editProductId) {
       const { name, price, category } = editProduct;
-      nameRef.current.value = name;
-      priceRef.current.value = price;
-      categoryRef.current.value = category;
+      setProductName(name);
+      setProductPrice(price);
+      setProductCategory(category);
     }
   }, [editProductId]);
+
+  useEffect(() => {
+    priceCheck(productPrice);
+  }, [productPrice]);
+
+  useEffect(() => {
+    nameCheck(productName);
+    console.log(numberError);
+  }, [productName]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     const tempProduct = {
       id: editProductId || uuidv4(),
-      name: nameRef.current.value,
-      price: parseInt(priceRef.current.value),
-      category:
-        categoryRef.current.value === UNCATEGORIZED_PRODUCT
-          ? UNCATEGORIZED_PRODUCT
-          : categoryRef.current.value,
+      name: productName,
+      price: parseInt(productPrice),
+      category: productCategory,
     };
 
     if (editProductId) {
       if (numberError || nameError) {
         handleAddingNotification("danger", "Product editing failed.");
         return;
+      } else {
+        handleEditProduct(tempProduct);
+        inputReset();
       }
-      handleEditProduct(tempProduct);
     } else {
       if (numberError || nameError) {
         handleAddingNotification("danger", "Product adding failed.");
-
         return;
+      } else {
+        handleAddProduct(tempProduct);
+        inputReset();
       }
-      handleAddProduct(tempProduct);
     }
 
     handleProductModalClose();
+    inputReset();
   }
 
   return (
     <Modal
       show={isProductModalShow}
-      onHide={handleProductModalClose}
+      onHide={() => {
+        handleProductModalClose();
+        inputReset();
+      }}
       backdrop="static"
       keyboard={false}
     >
@@ -105,25 +122,27 @@ const ProductCategory = () => {
       </Modal.Header>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Modal.Body>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3">
             <Form.Label>Product Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter Name"
-              ref={nameRef}
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
               autoFocus
               className={`${nameError && "error"} mb-1`}
             />
             {nameError && <span className="text-danger">Already exist.</span>}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3">
             <Form.Label>Product Price</Form.Label>
 
             <Form.Control
               type="number"
               placeholder="Enter Price"
+              value={productPrice}
+              onChange={(e) => setProductPrice(e.target.value)}
               min="0"
-              ref={priceRef}
               className={`${numberError && "error"} mb-1`}
             />
             {numberError && (
@@ -134,7 +153,10 @@ const ProductCategory = () => {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Categories</Form.Label>
-            <Form.Select ref={categoryRef}>
+            <Form.Select
+              value={productCategory}
+              onChange={(e) => setProductCategory(e.target.value)}
+            >
               <option value={UNCATEGORIZED_PRODUCT}>
                 {UNCATEGORIZED_PRODUCT}
               </option>
@@ -149,7 +171,13 @@ const ProductCategory = () => {
             <Button variant="dark" type="submit">
               {editProductId ? "Edit" : "Add"}
             </Button>
-            <Button variant="danger" onClick={handleProductModalClose}>
+            <Button
+              variant="danger"
+              onClick={() => {
+                handleProductModalClose();
+                inputReset();
+              }}
+            >
               Cancel
             </Button>
           </div>
