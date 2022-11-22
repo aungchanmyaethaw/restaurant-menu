@@ -1,31 +1,63 @@
 {
   "sampleProducts": [
     {
-      "id": "3f835d48-d7e9-4033-a310-2fb17933878a",
-      "name": "PineApple Cake",
-      "price": 10000,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
-    },
-    {
-      "id": "e8e903e1-baf1-465f-9741-3da4ffd22c71",
-      "name": "Carrot Cake",
+      "id": "61303730-0226-40c6-9f98-e623966a6f33",
+      "name": "Fried Rice (fried egg)",
       "price": 2000,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
+      "category": "d0bfeabf-5950-4dca-bf2a-638841f57030"
     },
     {
-      "id": "23bc4dcd-df59-49b5-81f1-717a8348c1e2",
-      "name": "Coca Cola",
+      "id": "a6b5eb6b-147b-412c-bdf9-159a4a0507bb",
+      "name": "Fried Rice (Pork)",
+      "price": 3000,
+      "category": "d0bfeabf-5950-4dca-bf2a-638841f57030"
+    },
+    {
+      "id": "2d203a59-ffb0-409c-839a-b1515d4c8a86",
+      "name": "Fried Rice (Chicken)",
+      "price": 3000,
+      "category": "d0bfeabf-5950-4dca-bf2a-638841f57030"
+    },
+    {
+      "id": "5ead9c6e-f8fa-45b9-b609-4640b4760481",
+      "name": "Egg",
+      "price": 200,
+      "category": "uncategorized"
+    },
+    {
+      "id": "d3cd9db5-24cc-422e-a2f3-63fdcdae4ca5",
+      "name": "fried Rice",
       "price": 1000,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
+      "category": "d0bfeabf-5950-4dca-bf2a-638841f57030"
+    },
+    {
+      "id": "fa3fb6ae-c162-4961-9062-2f50d3cc35f0",
+      "name": "test",
+      "price": 1000,
+      "category": "ac9952f6-e473-44eb-8560-864a0b182061"
+    },
+    {
+      "id": "fc9987c9-4100-46a8-823f-315adefc9cf6",
+      "name": "testing 1",
+      "price": 1000,
+      "category": "d0bfeabf-5950-4dca-bf2a-638841f57030"
     }
   ],
   "categories": [
     {
-      "id": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab",
-      "name": "Updated Cakes"
+      "id": "d0bfeabf-5950-4dca-bf2a-638841f57030",
+      "name": "Breakfast"
     },
     {
-      "id": "21528ba0-247a-4cca-b0d4-0b48d701e01d",
+      "id": "ac9952f6-e473-44eb-8560-864a0b182061",
+      "name": "Lunch"
+    },
+    {
+      "id": "3d92177c-fa53-4cb3-a665-9282c92f3daa",
+      "name": "Dinner"
+    },
+    {
+      "id": "7aa26176-4f43-4aad-ab1b-aeb8740a9974",
       "name": "Drinks"
     }
   ],

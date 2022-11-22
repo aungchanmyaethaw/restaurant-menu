@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 const AppContext = createContext();
 
 export const UNCATEGORIZED_PRODUCT = "uncategorized";
-
+const CHECKOUT_CONFIRM_STATUS = "checkout.confirm";
 export function useAppContext() {
   return useContext(AppContext);
 }
@@ -24,7 +24,14 @@ export function AppProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(null);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [orders, setOrders] = useState([]);
+  const [confirmAlert, setConfirmAlert] = useState({
+    message: "",
+    isOpen: false,
+  });
+  const [isCheckoutConfirm, setIsCheckoutConfirm] = useState(null);
+  const [isThankyouOpen, setIsThankyouOpen] = useState(false);
   const handleChangeAdmin = () => setIsAdmin(true);
+
   const handleChangeUsers = () => setIsAdmin(false);
 
   const handleCategoryModalClose = () => {
@@ -95,6 +102,19 @@ export function AppProvider({ children }) {
     }
   };
 
+  const handleConfirmAlertOpen = (message) => {
+    handleCheckOutModalClose();
+    setConfirmAlert({ message, isOpen: true });
+  };
+
+  const handleConfirmAlertClose = () => {
+    setConfirmAlert({ message: "", isOpen: false });
+  };
+
+  const handleThankyouModalOpen = () => setIsThankyouOpen(true);
+
+  const handleThankyouModalClose = () => setIsThankyouOpen(false);
+
   // Fetching Data
 
   const getData = async (url, setState) => {
@@ -116,6 +136,23 @@ export function AppProvider({ children }) {
     getData("http://localhost:8000/categories", setCategories);
     getData("http://localhost:8000/orders", setOrders);
   }, []);
+
+  useEffect(() => {
+    const confirmStatus = JSON.parse(
+      localStorage.getItem(CHECKOUT_CONFIRM_STATUS)
+    );
+    if (confirmStatus == null) {
+      setIsCheckoutConfirm(false);
+    }
+    setIsCheckoutConfirm(confirmStatus);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      CHECKOUT_CONFIRM_STATUS,
+      JSON.stringify(isCheckoutConfirm)
+    );
+  }, [isCheckoutConfirm]);
 
   useEffect(() => {
     if (notifications.length > 0) {
@@ -278,7 +315,6 @@ export function AppProvider({ children }) {
   }
 
   function handleOrderChangesFromUsersModal(id, qty, total) {
-    console.log(id, qty, total);
     fetch(`http://localhost:8000/orders/${id}`, {
       method: "PATCH",
       headers: { "content-type": "application/json" },
@@ -305,6 +341,20 @@ export function AppProvider({ children }) {
     }).then(() => {
       setOrders(filteredOrders);
     });
+  }
+
+  // Checkout
+
+  function handleCheckoutConfirm() {
+    setIsCheckoutConfirm(true);
+    handleConfirmAlertClose();
+    handleThankyouModalOpen();
+  }
+
+  function handleCheckoutCancel() {
+    setIsCheckoutConfirm(false);
+    handleConfirmAlertClose();
+    handleCheckOutModalOpen();
   }
 
   return (
@@ -344,6 +394,15 @@ export function AppProvider({ children }) {
         handleAddSingleProductOrderDetails,
         handleOrderChangesFromUsersModal,
         handleOrderDelete,
+        confirmAlert,
+        handleConfirmAlertOpen,
+        handleConfirmAlertClose,
+        handleCheckoutConfirm,
+        handleCheckoutCancel,
+        isThankyouOpen,
+        handleThankyouModalOpen,
+        handleThankyouModalClose,
+        isCheckoutConfirm,
       }}
     >
       {children}

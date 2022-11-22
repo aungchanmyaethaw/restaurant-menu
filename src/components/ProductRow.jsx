@@ -22,7 +22,7 @@ const ProductRow = ({ id, name, price, lastIndex, index }) => {
       }`}
     >
       <div className="d-flex justify-content-between  flex-grow-1">
-        <span>{name}</span>
+        <span className="text-capitalize">{name}</span>
         <span>
           {isAdmin
             ? currencyFormatter.format(price)

@@ -16,6 +16,10 @@ const CategoryModal = () => {
   const [category, setCategory] = useState("");
   const [nameError, setNameError] = useState(false);
 
+  const inputReset = () => {
+    setCategory("");
+  };
+
   const categoryCheck = (name) => {
     let result = [];
 
@@ -57,7 +61,7 @@ const CategoryModal = () => {
 
     const tempCategory = {
       id: editCategoryId || uuidv4(),
-      name: category,
+      name: category.trim(),
     };
     if (editCategoryId) {
       if (nameError) {
@@ -70,16 +74,19 @@ const CategoryModal = () => {
         handleAddingNotification("danger", "Category editing failed.");
         return;
       }
-
       handleAddCategory(tempCategory);
     }
     handleCategoryModalClose();
+    inputReset();
   }
 
   return (
     <Modal
       show={isCategoryModalShow}
-      onHide={handleCategoryModalClose}
+      onHide={() => {
+        handleCategoryModalClose();
+        inputReset();
+      }}
       backdrop="static"
       keyboard={false}
     >
@@ -105,7 +112,13 @@ const CategoryModal = () => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleCategoryModalClose}>
+          <Button
+            variant="danger"
+            onClick={() => {
+              handleCategoryModalClose();
+              inputReset();
+            }}
+          >
             Cancel
           </Button>
           <Button variant="dark" type="submit">

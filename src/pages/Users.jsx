@@ -1,15 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   NotificationsContainer,
   Loader,
   Error,
   ProductMenu,
   UsersCheckoutModal,
+  ConfirmModal,
+  ThankyouModal,
 } from "../components";
 
 import { useAppContext } from "../contexts";
 const Users = () => {
-  const { isLoading, isError, handleChangeUsers } = useAppContext();
+  const {
+    isLoading,
+    isError,
+    handleChangeUsers,
+    handleCheckoutConfirm,
+    handleCheckoutCancel,
+  } = useAppContext();
 
   useEffect(() => handleChangeUsers(), []);
 
@@ -21,6 +29,11 @@ const Users = () => {
     <>
       <NotificationsContainer />
       <UsersCheckoutModal />
+      <ConfirmModal
+        confirm={handleCheckoutConfirm}
+        cancel={handleCheckoutCancel}
+      />
+      <ThankyouModal />
       {isError ? (
         <Error />
       ) : (

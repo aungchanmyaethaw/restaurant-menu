@@ -21,9 +21,13 @@ const ProductMenu = () => {
           gap: "1.25rem",
         }}
       >
-        {categories.map((category) => (
-          <CategoryRow {...category} key={category.id} />
-        ))}
+        {categories.length !== 0 ? (
+          categories.map((category) => (
+            <CategoryRow {...category} key={category.id} />
+          ))
+        ) : (
+          <h2 className="text-info">Currently Empty...</h2>
+        )}
         <UnCategorizedProductRow />
       </ul>
     </section>

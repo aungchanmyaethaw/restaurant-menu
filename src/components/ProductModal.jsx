@@ -78,7 +78,7 @@ const ProductCategory = () => {
 
     const tempProduct = {
       id: editProductId || uuidv4(),
-      name: productName,
+      name: productName.trim(),
       price: parseInt(productPrice),
       category: productCategory,
     };

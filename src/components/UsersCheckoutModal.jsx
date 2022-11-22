@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { currencyFormatter } from "../utils";
 import { QtyBadge } from "./index";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { SingleOrderDetails } from "./index";
 import { useAppContext } from "../contexts";
 const UsersCheckoutModal = () => {
-  const { orders, isCheckoutModalOpen, handleCheckOutModalClose } =
-    useAppContext();
+  const {
+    orders,
+    isCheckoutModalOpen,
+    handleCheckOutModalClose,
+    handleConfirmAlertOpen,
+    isCheckoutConfirm,
+  } = useAppContext();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -53,9 +58,28 @@ const UsersCheckoutModal = () => {
         )}
       </Modal.Body>
       {total !== 0 && (
-        <Modal.Footer className="d-flex justify-content-between align-items-center">
-          <h4 className="h4">Total</h4>
-          <span className="fs-5">{currencyFormatter.format(total)}</span>
+        <Modal.Footer className="d-block">
+          <div className="d-flex justify-content-between mb-4">
+            <h4 className="h4">Total</h4>
+            <span className="fs-5">{currencyFormatter.format(total)}</span>
+          </div>
+          <div className="d-flex justify-content-center">
+            {isCheckoutConfirm ? (
+              <Button variant="dark" onClick={handleCheckOutModalClose}>
+                Close
+              </Button>
+            ) : (
+              <Button
+                onClick={() =>
+                  handleConfirmAlertOpen(
+                    "Are you sure you want to checkout? This Actions can't be undone."
+                  )
+                }
+              >
+                Confirm
+              </Button>
+            )}
+          </div>
         </Modal.Footer>
       )}
     </Modal>

@@ -16,6 +16,8 @@ import UsersCheckoutBtn from "./UsersCheckoutBtn";
 import UsersCheckoutModal from "./UsersCheckoutModal";
 import QtyBadge from "./QtyBadge";
 import SingleOrderDetails from "./SingleOrderDetails";
+import ConfirmModal from "./ConfirmModal";
+import ThankyouModal from "./ThankyouModal";
 export {
   CategoryRow,
   ProductModal,
@@ -35,4 +37,6 @@ export {
   UsersCheckoutModal,
   QtyBadge,
   SingleOrderDetails,
+  ConfirmModal,
+  ThankyouModal,
 };
