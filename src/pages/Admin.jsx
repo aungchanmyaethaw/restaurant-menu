@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ProductModal,
   ProductMenu,
@@ -6,11 +6,32 @@ import {
   CategoryModal,
   Error,
   NotificationsContainer,
+  ConfirmModal,
 } from "../components";
 import { useAppContext } from "../contexts";
 
 const Admin = () => {
-  const { isLoading, isError, handleChangeAdmin } = useAppContext();
+  const {
+    isLoading,
+    isError,
+    handleChangeAdmin,
+    handleDeleteProduct,
+    handleDeleteCategory,
+    handleConfirmAlertClose,
+    confirmAlert,
+  } = useAppContext();
+
+  let deleteId = "";
+
+  function handleConfirm() {
+    if (confirmAlert.payload.productId == undefined) {
+      deleteId = "categoryId";
+      return handleDeleteCategory;
+    } else {
+      deleteId = "productId";
+      return handleDeleteProduct;
+    }
+  }
 
   useEffect(() => {
     handleChangeAdmin();
@@ -25,6 +46,11 @@ const Admin = () => {
       <CategoryModal />
       <ProductModal />
       <NotificationsContainer />
+      <ConfirmModal
+        confirm={handleConfirm()}
+        cancel={handleConfirmAlertClose}
+        id={deleteId}
+      />
       {isError ? (
         <Error />
       ) : (

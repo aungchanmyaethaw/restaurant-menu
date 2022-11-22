@@ -1,7 +1,11 @@
 import { Button } from "react-bootstrap";
 import { useAppContext } from "../contexts";
 const AdminProductBtnsGroup = ({ productId }) => {
-  const { handleEditProductId, handleDeleteProduct } = useAppContext();
+  const { handleEditProductId, handleConfirmAlertOpen } = useAppContext();
+
+  function handleDelete(productId, message) {
+    handleConfirmAlertOpen(message, { productId });
+  }
 
   return (
     <div className="d-flex justify-content-end gap-2">
@@ -15,7 +19,9 @@ const AdminProductBtnsGroup = ({ productId }) => {
       <Button
         variant="danger"
         size="sm"
-        onClick={() => handleDeleteProduct(productId)}
+        onClick={() =>
+          handleDelete(productId, "Are you sure you want to delete?")
+        }
       >
         Delete
       </Button>

@@ -129,6 +129,7 @@ const ProductCategory = () => {
               onChange={(e) => setProductName(e.target.value)}
               autoFocus
               className={`${nameError && "error"} mb-1`}
+              required
             />
             {nameError && <span className="text-danger">Already exist.</span>}
           </Form.Group>
@@ -142,6 +143,7 @@ const ProductCategory = () => {
               onChange={(e) => setProductPrice(e.target.value)}
               min="0"
               className={`${numberError && "error"} mb-1`}
+              required
             />
             {numberError && (
               <span className="text-danger">

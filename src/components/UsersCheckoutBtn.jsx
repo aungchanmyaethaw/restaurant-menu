@@ -12,7 +12,7 @@ const UsersMenuBtn = () => {
       onClick={handleCheckOutModalOpen}
     >
       {isCheckoutConfirm ? <FaReceipt /> : <FaConciergeBell />}
-      {isCheckoutConfirm ? "Receipts" : "Checkout"}
+      {isCheckoutConfirm ? "Receipt" : "Checkout"}
       <QtyBadge />
     </Button>
   );

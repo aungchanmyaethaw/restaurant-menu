@@ -27,6 +27,7 @@ export function AppProvider({ children }) {
   const [confirmAlert, setConfirmAlert] = useState({
     message: "",
     isOpen: false,
+    payload: {},
   });
   const [isCheckoutConfirm, setIsCheckoutConfirm] = useState(null);
   const [isThankyouOpen, setIsThankyouOpen] = useState(false);
@@ -102,13 +103,13 @@ export function AppProvider({ children }) {
     }
   };
 
-  const handleConfirmAlertOpen = (message) => {
+  const handleConfirmAlertOpen = (message, payload) => {
     handleCheckOutModalClose();
-    setConfirmAlert({ message, isOpen: true });
+    setConfirmAlert({ message, isOpen: true, payload });
   };
 
   const handleConfirmAlertClose = () => {
-    setConfirmAlert({ message: "", isOpen: false });
+    setConfirmAlert({ message: "", isOpen: false, payload: {} });
   };
 
   const handleThankyouModalOpen = () => setIsThankyouOpen(true);

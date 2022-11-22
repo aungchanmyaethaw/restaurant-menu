@@ -1,6 +1,5 @@
 import { useAppContext } from "../contexts";
 import { Button, Form } from "react-bootstrap";
-import { FaPlus } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 
 const UsersProductForm = ({
@@ -44,7 +43,7 @@ const UsersProductForm = ({
           type="submit"
           onClick={handleSubmit}
         >
-          <FaPlus />
+          Add
         </Button>
       </div>
     </Form>

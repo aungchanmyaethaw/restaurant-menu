@@ -105,6 +105,7 @@ const CategoryModal = () => {
               onChange={(e) => setCategory(e.target.value)}
               autoFocus
               className={`${nameError && "error"} mb-1`}
+              required
             />
             {nameError && (
               <span className="text-danger">category already existed.</span>

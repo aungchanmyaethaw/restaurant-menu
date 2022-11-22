@@ -4,9 +4,13 @@ import {
   AdminMenuBtnsGroup,
   UsersCheckoutBtn,
 } from "./index";
-import { useAppContext } from "../contexts";
+import { useAppContext, UNCATEGORIZED_PRODUCT } from "../contexts";
 const ProductMenu = () => {
-  const { categories, isAdmin } = useAppContext();
+  const { categories, products, isAdmin } = useAppContext();
+
+  const isEmpty = () =>
+    categories.length === 0 &&
+    products.every((product) => product.category !== UNCATEGORIZED_PRODUCT);
 
   return (
     <section className="py-5">
@@ -21,12 +25,12 @@ const ProductMenu = () => {
           gap: "1.25rem",
         }}
       >
-        {categories.length !== 0 ? (
+        {isEmpty() ? (
+          <h2 className="text-info">Currently Empty...</h2>
+        ) : (
           categories.map((category) => (
             <CategoryRow {...category} key={category.id} />
           ))
-        ) : (
-          <h2 className="text-info">Currently Empty...</h2>
         )}
         <UnCategorizedProductRow />
       </ul>
