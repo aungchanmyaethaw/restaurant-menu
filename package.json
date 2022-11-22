@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "json-server": "npx json-server --watch src/datas/index.json --port 8000"
   },
   "dependencies": {
     "bootstrap": "^5.2.2",

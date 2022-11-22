@@ -23,7 +23,11 @@ const ProductRow = ({ id, name, price, lastIndex, index }) => {
     >
       <div className="d-flex justify-content-between  flex-grow-1">
         <span>{name}</span>
-        <span>{currencyFormatter.format(total)}</span>
+        <span>
+          {isAdmin
+            ? currencyFormatter.format(price)
+            : currencyFormatter.format(total)}
+        </span>
       </div>
 
       {isAdmin ? (

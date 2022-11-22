@@ -17,7 +17,7 @@ const ProductMenu = () => {
         className="p-0 mt-5"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(320px,auto))",
+          gridTemplateColumns: "repeat(auto-fit,minmax(480px,1fr))",
           gap: "1.25rem",
         }}
       >

@@ -1,162 +1,33 @@
 {
   "sampleProducts": [
     {
-      "id": "333a777e-75f8-4e37-a3d0-e0e9b831ac63",
-      "name": "Tea",
-      "price": 2000,
-      "category": "dddd2eba-df8f-450b-984f-8adbf72a542a"
-    },
-    {
-      "id": "8df0db6b-6c9d-4364-b226-29c285c48930",
-      "name": "Coffee",
-      "price": 2500,
-      "category": "dddd2eba-df8f-450b-984f-8adbf72a542a"
-    },
-    {
-      "id": "29df0997-3206-4376-aa02-f52f58b96682",
-      "name": "Coffee",
-      "price": 2000,
-      "category": "de6f6e75-0a5b-4291-98b2-1c17c4c6892a"
-    },
-    {
-      "id": "1480de09-337b-493d-99c0-f065a3c2c69f",
-      "name": "Tea",
-      "price": 1000,
-      "category": "de6f6e75-0a5b-4291-98b2-1c17c4c6892a"
-    },
-    {
-      "id": "ac18e5ff-f4a4-4a2a-8e3a-be13f789f0d0",
-      "name": "Coca Cola",
-      "price": 1000,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "61d9b5f6-60d8-4a2f-ba03-418d1337079c",
-      "name": "Updated Strawberry Cake",
-      "price": 2500,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "4710de4b-b8b5-4f0c-bcee-0e2f42512b8d",
-      "name": "Pineapple Cake",
-      "price": 1500,
+      "id": "3f835d48-d7e9-4033-a310-2fb17933878a",
+      "name": "PineApple Cake",
+      "price": 10000,
       "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
     },
     {
-      "id": "8bc0259b-2a23-4d87-baab-99785ee45127",
-      "name": "Water",
-      "price": 500,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "fddedbc2-e8ec-49f1-81e9-5adab5eacc07",
+      "id": "e8e903e1-baf1-465f-9741-3da4ffd22c71",
       "name": "Carrot Cake",
       "price": 2000,
       "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
     },
     {
-      "id": "ecce53fa-27a9-4ff4-b386-9b91146280fe",
-      "name": "Cheese Cake",
-      "price": 2000,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
-    },
-    {
-      "id": "d8f89d95-749e-4188-bc97-ddeb7115d545",
-      "name": "Coffee Cake",
-      "price": 3000,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
-    },
-    {
-      "id": "754b8136-d6f3-4b0e-9042-4f4855d95172",
-      "name": "Red Bull",
-      "price": 1200,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "2f9d0e4a-6700-4fa2-aea0-7f3e4194af23",
-      "name": "Shark",
-      "price": 1300,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "cb52de14-bb01-4a63-b1ac-4a74c8c69a87",
-      "name": "Sprite",
-      "price": 1000,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
-    },
-    {
-      "id": "8f791b9a-9ddd-4429-91b4-1488c4d631c5",
-      "name": "Sting(Red)",
-      "price": 800,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "713b3d3f-6626-4776-8ca3-b2a4e5607784",
-      "name": "Sting(Yellow)",
-      "price": 800,
-      "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "c70b7eca-3da4-48eb-a4bf-e241b1673ca2",
-      "name": "Speed",
+      "id": "23bc4dcd-df59-49b5-81f1-717a8348c1e2",
+      "name": "Coca Cola",
       "price": 1000,
       "category": "21528ba0-247a-4cca-b0d4-0b48d701e01d"
-    },
-    {
-      "id": "ca1dd11d-60b7-4a7c-b8c3-51ed2e24d165",
-      "name": "Blah Blah Cake",
-      "price": 12000,
-      "category": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab"
-    },
-    {
-      "id": "e23490f7-edce-4a84-b362-572918b911cf",
-      "name": "testing 2",
-      "price": 1000,
-      "category": "uncategorized"
     }
   ],
   "categories": [
     {
       "id": "20b2cf91-3acd-4762-b3c9-f2fa8d8318ab",
-      "name": "Cakes"
+      "name": "Updated Cakes"
     },
     {
       "id": "21528ba0-247a-4cca-b0d4-0b48d701e01d",
       "name": "Drinks"
-    },
-    {
-      "id": "a87b5abd-df72-4e09-8780-cc9a89f4d10a",
-      "name": "Testing Category 1"
     }
   ],
-  "orders": [
-    {
-      "id": "edf2e6f7-5228-4128-8497-640bddb6893e",
-      "productId": "4710de4b-b8b5-4f0c-bcee-0e2f42512b8d",
-      "name": "Pineapple Cake",
-      "total": 93000,
-      "qty": 62
-    },
-    {
-      "id": "47ab00bb-0e21-4419-887c-326577327723",
-      "productId": "fddedbc2-e8ec-49f1-81e9-5adab5eacc07",
-      "name": "Carrot Cake",
-      "total": 8000,
-      "qty": 4
-    },
-    {
-      "id": "cb5c1149-1f82-47e8-8244-3dd95923a067",
-      "productId": "e23490f7-edce-4a84-b362-572918b911cf",
-      "name": "testing 2",
-      "total": 2000,
-      "qty": 2
-    },
-    {
-      "id": "e88db58e-3792-4341-b287-4cb767a71c74",
-      "productId": "ca1dd11d-60b7-4a7c-b8c3-51ed2e24d165",
-      "name": "Blah Blah Cake",
-      "total": 24000,
-      "qty": 2
-    }
-  ]
+  "orders": []
 }

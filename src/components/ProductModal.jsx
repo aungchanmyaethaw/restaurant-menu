@@ -42,13 +42,12 @@ const ProductCategory = () => {
         (product) => product.name.toLowerCase() !== name?.toLowerCase()
       );
     }
-    console.log();
+
     if (!result) {
       setNameError(true);
     } else {
       setNameError(false);
     }
-    console.log(nameError);
   };
 
   const inputReset = () => {
@@ -72,7 +71,6 @@ const ProductCategory = () => {
 
   useEffect(() => {
     nameCheck(productName);
-    console.log(numberError);
   }, [productName]);
 
   function handleSubmit(event) {

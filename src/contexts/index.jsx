@@ -175,6 +175,7 @@ export function AppProvider({ children }) {
       }
       return product;
     });
+    console.log(newProducts);
     setProducts(newProducts);
     setEditProductId(null);
     setEditProduct({});
@@ -276,6 +277,36 @@ export function AppProvider({ children }) {
     setProducts(newProducts);
   }
 
+  function handleOrderChangesFromUsersModal(id, qty, total) {
+    console.log(id, qty, total);
+    fetch(`http://localhost:8000/orders/${id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        qty,
+        total,
+      }),
+    }).then(() => {
+      const tempOrders = orders.map((order) => {
+        if (order.id === id) {
+          return { ...order, qty, total };
+        }
+        return order;
+      });
+
+      setOrders(tempOrders);
+    });
+  }
+
+  function handleOrderDelete(orderId) {
+    const filteredOrders = orders.filter(({ id }) => id !== orderId);
+    fetch("http://localhost:8000/orders/" + orderId, {
+      method: "DELETE",
+    }).then(() => {
+      setOrders(filteredOrders);
+    });
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -311,6 +342,8 @@ export function AppProvider({ children }) {
         handleCheckOutModalOpen,
         handleCheckOutModalClose,
         handleAddSingleProductOrderDetails,
+        handleOrderChangesFromUsersModal,
+        handleOrderDelete,
       }}
     >
       {children}

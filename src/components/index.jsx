@@ -15,6 +15,7 @@ import UsersProductForm from "./UsersProductForm";
 import UsersCheckoutBtn from "./UsersCheckoutBtn";
 import UsersCheckoutModal from "./UsersCheckoutModal";
 import QtyBadge from "./QtyBadge";
+import SingleOrderDetails from "./SingleOrderDetails";
 export {
   CategoryRow,
   ProductModal,
@@ -33,4 +34,5 @@ export {
   UsersCheckoutBtn,
   UsersCheckoutModal,
   QtyBadge,
+  SingleOrderDetails,
 };

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { currencyFormatter } from "../utils";
 import { QtyBadge } from "./index";
-import { Modal, Form } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { SingleOrderDetails } from "./index";
 import { useAppContext } from "../contexts";
 const UsersCheckoutModal = () => {
   const { orders, isCheckoutModalOpen, handleCheckOutModalClose } =
@@ -45,27 +46,18 @@ const UsersCheckoutModal = () => {
               <span className="col-3">Total</span>
             </div>
             <hr />
-            {orders.map(({ id, name, qty, total }) => (
-              <div className="row mb-3" key={id}>
-                <span className="col-6">{name}</span>
-                <div className="col-3">
-                  <Form.Control
-                    type="number"
-                    value={qty}
-                    style={{ width: "5rem" }}
-                  />
-                </div>
-
-                <span className="col-3">{currencyFormatter.format(total)}</span>
-              </div>
+            {orders.map((order) => (
+              <SingleOrderDetails {...order} key={order.id} />
             ))}
           </ul>
         )}
       </Modal.Body>
-      <Modal.Footer className="d-flex justify-content-between align-items-center">
-        <h4 className="h4">Total</h4>
-        <span className="fs-5">{currencyFormatter.format(total)}</span>
-      </Modal.Footer>
+      {total !== 0 && (
+        <Modal.Footer className="d-flex justify-content-between align-items-center">
+          <h4 className="h4">Total</h4>
+          <span className="fs-5">{currencyFormatter.format(total)}</span>
+        </Modal.Footer>
+      )}
     </Modal>
   );
 };
