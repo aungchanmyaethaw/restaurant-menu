@@ -9,7 +9,8 @@ const UsersProductForm = ({
   handleQtyInput,
   total,
 }) => {
-  const { handleAddSingleProductOrderDetails } = useAppContext();
+  const { handleAddSingleProductOrderDetails, isCheckoutConfirm } =
+    useAppContext();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -27,21 +28,24 @@ const UsersProductForm = ({
   return (
     <Form>
       <div className="d-flex justify-content-between justify-content-md-end align-items-center gap-2">
-        <Form.Group className="d-flex  align-items-baseline gap-2">
-          <Form.Label>QTY:</Form.Label>
-          <Form.Control
-            type="number"
-            style={{ width: "5rem" }}
-            min="1"
-            value={qty}
-            onChange={(event) => handleQtyInput(event.target.value)}
-          />
-        </Form.Group>
+        {!isCheckoutConfirm && (
+          <Form.Group className="d-flex  align-items-baseline gap-2">
+            <Form.Label>QTY:</Form.Label>
+            <Form.Control
+              type="number"
+              style={{ width: "5rem" }}
+              min="1"
+              value={qty}
+              onChange={(event) => handleQtyInput(event.target.value)}
+            />
+          </Form.Group>
+        )}
         <Button
           variant="primary"
           className="d-flex justify-content-center align-items-center"
           type="submit"
           onClick={handleSubmit}
+          disabled={isCheckoutConfirm}
         >
           Add
         </Button>

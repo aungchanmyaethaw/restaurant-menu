@@ -1,5 +1,55 @@
 {
-  "sampleProducts": [],
-  "categories": [],
-  "orders": []
+  "sampleProducts": [
+    {
+      "id": "f66f42c7-153f-48a8-9822-e809bcf75572",
+      "name": "Strawberry Cake",
+      "price": 2000,
+      "category": "1f23c488-3956-49b2-914a-b847c0e48272"
+    },
+    {
+      "id": "6089ea0c-3859-4f79-8702-1b6b051037be",
+      "name": "Coca Cola",
+      "price": 1000,
+      "category": "bc51f6e8-1722-415e-9be6-4124ea1d69d6"
+    },
+    {
+      "id": "32d8ff01-55af-4bff-a957-d2fca662316e",
+      "name": "Banana Cake",
+      "price": 1500,
+      "category": "1f23c488-3956-49b2-914a-b847c0e48272"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1f23c488-3956-49b2-914a-b847c0e48272",
+      "name": "Cakes"
+    },
+    {
+      "id": "bc51f6e8-1722-415e-9be6-4124ea1d69d6",
+      "name": "Drinks"
+    }
+  ],
+  "orders": [
+    {
+      "id": "f6413677-7135-4d63-8566-3005c48c11c0",
+      "productId": "f66f42c7-153f-48a8-9822-e809bcf75572",
+      "name": "Strawberry Cake",
+      "total": 2000,
+      "qty": 1
+    },
+    {
+      "id": "e54536e1-2ded-4081-883e-d633980ea337",
+      "productId": "32d8ff01-55af-4bff-a957-d2fca662316e",
+      "name": "Banana Cake",
+      "total": 1500,
+      "qty": 1
+    },
+    {
+      "id": "e9b9e23f-dad3-4033-8cb8-2c85fc79c50d",
+      "productId": "6089ea0c-3859-4f79-8702-1b6b051037be",
+      "name": "Coca Cola",
+      "total": 1000,
+      "qty": 1
+    }
+  ]
 }
